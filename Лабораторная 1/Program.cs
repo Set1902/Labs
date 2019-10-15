@@ -11,15 +11,15 @@ namespace ConsoleApplication1
 
         static void Main(string[] args)  
         {
-            Console.WriteLine("Ковалев Сергей ИУ5-32Б");
+            Console.Title = "Ковалев Сергей ИУ5-32Б";
             double a, b, c, D, x1, x2, x3, x4, t1, t2;
 
             D = 0;
-
+        link1:
             try
             {
 
-
+                
                 Console.WriteLine("Введите первое число");
                 a = double.Parse(Console.ReadLine());
                 Console.WriteLine("Введите второе число");
@@ -196,8 +196,9 @@ namespace ConsoleApplication1
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Неправильное значение");
-                Console.ReadKey();
-                System.Environment.Exit(0);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Попробуйте заново");
+                goto link1;
             }
 
 
