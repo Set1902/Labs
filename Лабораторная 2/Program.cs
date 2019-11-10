@@ -2,146 +2,119 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Lab2
+namespace Lab_2
 {
     class Program
+ 
     {
-        static double InputVal(string prompt)
-        {
-            double a = 0;
-            do
-                Console.Write(prompt);
-            while (!double.TryParse(Console.ReadLine(), out a));
-            return a;
-        }
-        public static class STATE
-        {
-            public const String Rectangle = "1";
-            public const String Sqare = "2";
-            public const String Circle = "3";
-        }
-        static string Menu()
-        {
-            Console.WriteLine("Выберите фигуру?");
-            Console.WriteLine("1. Прямоугольник;");
-            Console.WriteLine("2. Квадрат;");
-            Console.WriteLine("3. Окружность;");
-            Console.WriteLine("4. Выход;");
-            string s = Console.ReadLine();
-#if AUTOTEST
-                Console.WriteLine(s);
-#endif
-            return s;
-        }
-        static void ClearScreen()
-        {
-            Console.WriteLine("Нажмите enter для продолжения ...");
-            Console.ReadLine();
-            Console.Clear();
-        }
-
         static void Main(string[] args)
         {
-            IPrint obj;
-            bool exitFlag = false;
-            double a1, b1;
-            do
-            {
-                switch (Menu())
-                {
-                    case STATE.Rectangle:
-                        a1 = InputVal("Введите высоту прямоугольника \n");
-                        b1 = InputVal("Введите ширину прямоугольника \n");
-                        obj = new Rectangle(a1, b1);
-                        obj.Print();
-                        break;
-
-                    case STATE.Sqare:
-                        a1 = InputVal("Введите сторону квадрата \n");
-                        obj = new Square(a1);
-                        obj.Print();
-                        break;
-
-                    case STATE.Circle:
-                        a1 = InputVal("Введите радиус окружности \n");
-                        obj = new Circle(a1);
-                        obj.Print();
-                        break;
-
-                    default:
-                        exitFlag = true;
-                        break;
-                }
-                ClearScreen();
-
-            } while (!exitFlag);
+        Console.Title = "Ковалев Сергей ИУ5-32Б";
+        double a, b, c, d;
+            Console.WriteLine("Введите длину и высоту прямоугольника");
+            a = double.Parse(Console.ReadLine());
+            b = double.Parse(Console.ReadLine());
+            Rectangle rect = new Rectangle(a, b);
+            rect.Print();
+            Console.ReadKey();
+            Console.WriteLine("Введите сторону квадрата");
+            c = double.Parse(Console.ReadLine());
+            Square square = new Square(c);
+            square.Print();
+            Console.ReadKey();
+            Console.WriteLine("Введите радиус круга");
+            d = double.Parse(Console.ReadLine());
+            Circle circle = new Circle(d);
+            circle.Print();
+            Console.ReadKey();
+            System.Environment.Exit(0);
+            Console.ReadLine();
         }
-
-
     }
+    // Абстрактный класс «Геометрическая фигура» 
+    abstract class Figure
+    {
+        public string Type
+        {
+            get
+            {
+                return this._Type;
+            }
+            protected set
+            {
+                this._Type = value;
+            }
+        }
+        string _Type;
+
+        public abstract double Area();
+
+        public override string ToString()
+        {
+            return this._Type + this.Area().ToString();
+        }
+    }
+    // Интерфуйс IPrint
     interface IPrint
     {
         void Print();
     }
-    abstract class GeometricFigure
+    // Класс круг
+    class Circle : Figure, IPrint
     {
-        public abstract double Area();
-        public abstract override string ToString();
-    }
-    class Rectangle : GeometricFigure, IPrint
-    {
+        double radius;
 
-        private double h = 0;
-        private double w = 0;
-
-        public double H { get => h; set => h = value; }
-        public double W { get => w; set => w = value; }
-        public Rectangle(double height, double width)
+        public Circle(double rd)
         {
-            H = height;
-            W = width;
+            this.radius = rd;
+            this.Type = "Площадь круга = ";
         }
+
         public override double Area()
         {
-            return W * H;
+            double result = Math.PI * this.radius * this.radius;
+            return result;
         }
-        public override string ToString()
+
+        public void Print()
         {
-            return "Прямоугольниу: " + W.ToString() + "x" + H.ToString() + ", S = " + Area().ToString();
+            Console.WriteLine(this.ToString());
         }
-        public void Print() => Console.WriteLine(this);
     }
+    // Класс прямоугольник
+    class Rectangle : Figure, IPrint
+    {
+        double height;
+        double width;
 
+        public Rectangle(double hg, double wd)
+        {
+            this.height = hg;
+            this.width = wd;
+            this.Type = "Площадь прямоугольника = ";
+        }
 
+        public override double Area()
+        {
+            double result = this.height * this.width;
+            return result;
+        }
+
+        public void Print()
+        {
+            Console.WriteLine(this.ToString());
+        }
+    }
+    // Класс квадрат
     class Square : Rectangle
     {
 
         public Square(double length) : base(length, length) { }
         public override string ToString()
         {
-            return "Квадрат: " + H.ToString() + "x" + H.ToString() + ", S = " + Area().ToString();
+            return "Площадь квадрата =  " + Area().ToString();
         }
 
-    }
-    class Circle : GeometricFigure, IPrint
-    {
-        private double r = 0;
-
-        public double R { get => r; set => r = value; }
-        public Circle(double radius)
-        {
-            R = radius;
-        }
-        public override double Area()
-        {
-            return Math.PI * R * R;
-        }
-        public override string ToString()
-        {
-            return "Круг: " + R.ToString() + ", S = " + Area().ToString();
-        }
-        public void Print() => Console.WriteLine(this);
     }
 }
