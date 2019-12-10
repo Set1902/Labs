@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 
-namespace Лаб3
+namespace Lab3
 {
     using System;
 
