@@ -13,7 +13,6 @@ namespace ConsoleApplication1
         {
             Console.Title = "Ковалев Сергей ИУ5-32Б";
             double a, b, c, D, x1, x2, x3, x4, t1, t2;
-
             D = 0;
         link1:
             try
