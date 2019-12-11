@@ -6,27 +6,28 @@ using System.Text;
 namespace Lab_2
 {
     class Program
- 
+
     {
         static void Main(string[] args)
         {
-        Console.Title = "Ковалев Сергей ИУ5-32Б";
-        double a, b, c, d;
+            IPrint wer;
+            Console.Title = "Ковалев Сергей ИУ5-32Б";
+            double a, b, c, d;
             Console.WriteLine("Введите длину и высоту прямоугольника");
             a = double.Parse(Console.ReadLine());
             b = double.Parse(Console.ReadLine());
-            Rectangle rect = new Rectangle(a, b);
-            rect.Print();
+            wer = new Rectangle(a, b);
+            wer.Print();
             Console.ReadKey();
             Console.WriteLine("Введите сторону квадрата");
             c = double.Parse(Console.ReadLine());
-            Square square = new Square(c);
-            square.Print();
+            wer = new Square(c);
+            wer.Print();
             Console.ReadKey();
             Console.WriteLine("Введите радиус круга");
             d = double.Parse(Console.ReadLine());
-            Circle circle = new Circle(d);
-            circle.Print();
+            wer = new Circle(d);
+            wer.Print();
             Console.ReadKey();
             System.Environment.Exit(0);
             Console.ReadLine();
@@ -63,57 +64,86 @@ namespace Lab_2
     // Класс круг
     class Circle : Figure, IPrint
     {
-        double radius;
-
-        public Circle(double rd)
+        public Circle(double radius)
         {
-            this.radius = rd;
-            this.Type = "Площадь круга = ";
+            _radius = radius;
+        }
+
+        private double _radius = 0;
+
+        public double radius
+        {
+            get { return _radius; }
+            set { _radius = value; }
         }
 
         public override double Area()
         {
-            double result = Math.PI * this.radius * this.radius;
-            return result;
+            return Math.PI * _radius * _radius;
+        }
+
+        public override string ToString()
+        {
+            return "Площадь круга = " + Area().ToString();
         }
 
         public void Print()
         {
-            Console.WriteLine(this.ToString());
+            Console.WriteLine(this);
         }
     }
     // Класс прямоугольник
     class Rectangle : Figure, IPrint
     {
-        double height;
-        double width;
-
-        public Rectangle(double hg, double wd)
+        public Rectangle(double height1, double width1)
         {
-            this.height = hg;
-            this.width = wd;
-            this.Type = "Площадь прямоугольника = ";
+            _height = height1;
+            _width = width1;
+        }
+
+        private double _height = 0;
+        public double height
+        {
+            get { return _height; }
+            set { _height = value; }
+        }
+
+        private double _width = 0;
+        public double width
+        {
+            get { return _width; }
+            set { _width = value; }
         }
 
         public override double Area()
         {
-            double result = this.height * this.width;
-            return result;
+            return _width * _height;
+        }
+
+        public override string ToString()
+        {
+            return "Площадь прямоуголька = " + Area().ToString();
         }
 
         public void Print()
         {
-            Console.WriteLine(this.ToString());
+            Console.WriteLine(this);
         }
     }
+
     // Класс квадрат
     class Square : Rectangle
     {
+        public Square(double height1) : base(height1, height1) { }
 
-        public Square(double length) : base(length, length) { }
+        public override double Area()
+        {
+            return height * height;
+        }
+
         public override string ToString()
         {
-            return "Площадь квадрата =  " + Area().ToString();
+            return "Площадь квадрата = " + Area().ToString();
         }
 
     }
