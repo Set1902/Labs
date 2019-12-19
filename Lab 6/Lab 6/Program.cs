@@ -6,7 +6,7 @@ namespace ConsoleApp1
     class Program
     {
         public delegate int d1(int x1, string x2);
-
+         
         public static List<int> SumArrays(List<int> x, List<string> str, d1 func)
         {
             if (x.Count != str.Count)
