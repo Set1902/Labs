@@ -53,69 +53,6 @@ namespace Files
         {
             this.Close();
         }
-
-        private void buttonSaveReport_Click(object sender, EventArgs e)
-        {
-            string TempReportFileName = "Report_" + DateTime.Now.ToString("yyyy_MM_dd_hhmmss");
-            SaveFileDialog fd = new SaveFileDialog();
-            fd.FileName = TempReportFileName;
-            fd.DefaultExt = ".html";
-            fd.Filter = "HTML Reports|*.html";
-            if (fd.ShowDialog() == DialogResult.OK)
-            {
-                string ReportFileName = fd.FileName;
-                StringBuilder b = new StringBuilder();
-                b.AppendLine("<html>");
-                b.AppendLine("<head>");
-                b.AppendLine("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>");
-                b.AppendLine("<title>" + "Report: " + ReportFileName + "</title>");
-                b.AppendLine("</head>");
-                b.AppendLine("<body>");
-                b.AppendLine("<h1>" + "Report: " + ReportFileName + "</h1>");
-                b.AppendLine("<table border='1'>");
-                b.AppendLine("<tr>");
-                b.AppendLine("<td>Reading time from file</td>");
-                b.AppendLine("<td>" + this.textBox1ReadTime.Text + "</td>");
-                b.AppendLine("</tr>");
-                b.AppendLine("<tr>");
-                b.AppendLine("<td>The number of unique words in the file</td>");
-                b.AppendLine("<td>" + this.textBox1FileReadCount.Text + "</td>");
-                b.AppendLine("</tr>");
-                b.AppendLine("<tr>");
-                b.AppendLine("<td>Key word</td>");
-                b.AppendLine("<td>" + this.textBoxFind.Text + "</td>");
-                b.AppendLine("</tr>");
-                b.AppendLine("<tr>");
-                b.AppendLine("<td>Maximum distance for fuzzy search</td>");
-                b.AppendLine("<td>" + this.textBoxMaxDist.Text + "</td>");
-                b.AppendLine("</tr>");
-                b.AppendLine("<tr>");
-                b.AppendLine("<td>Clear search time</td>");
-                b.AppendLine("<td>" + this.textBoxExactTime.Text + "</td>");
-                b.AppendLine("</tr>");
-                b.AppendLine("<tr>");
-                b.AppendLine("<td>Clear Search Time</td>");
-                b.AppendLine("<td>" + this.textBoxApproxTime.Text + "</td>");
-                b.AppendLine("</tr>");
-                b.AppendLine("<tr valign='top'>");
-                b.AppendLine("<td>Searching results</td>");
-                b.AppendLine("<td>");
-                b.AppendLine("<ul>");
-                foreach (var x in this.listBoxResult.Items)
-                {
-                    b.AppendLine("<li>" + x.ToString() + "</li>");
-                }
-                b.AppendLine("</ul>");
-                b.AppendLine("</td>");
-                b.AppendLine("</tr>");
-                b.AppendLine("</table>");
-                b.AppendLine("</body>");
-                b.AppendLine("</html>");
-                File.AppendAllText(ReportFileName, b.ToString());
-                MessageBox.Show("The report is generated. File: " + ReportFileName);
-            }
-        }
-
         private void buttonExact_Click(object sender, EventArgs e)
         {
             string word = this.textBoxFind.Text.Trim();
@@ -195,6 +132,11 @@ namespace Files
         }
 
         private void Files_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
         {
 
         }
