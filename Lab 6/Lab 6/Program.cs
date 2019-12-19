@@ -61,10 +61,10 @@ namespace ConsoleApp1
             str.Add("3");
             str.Add("4");
             d1 sum = Sum;
-
+            
 
             List<int> l1 = SumArrays(x, str, sum);
-            foreach (var i in l1)
+            foreach(var i in l1)
             {
                 Console.WriteLine(i);
             }
