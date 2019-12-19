@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
+using DistanceLibrary;
 using System.Threading.Tasks;
 using System.Text;
 
