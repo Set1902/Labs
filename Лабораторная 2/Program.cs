@@ -81,7 +81,7 @@ namespace Lab_2
         {
             return Math.PI * _radius * _radius;
         }
-
+         
         public override string ToString()
         {
             return "Площадь круга = " + Area().ToString();
