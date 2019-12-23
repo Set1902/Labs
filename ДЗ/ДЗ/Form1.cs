@@ -185,6 +185,61 @@ namespace DZ
         {
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string TempReportFileName = "Report_" + DateTime.Now.ToString("yyyy_MM_dd_hhmmss");
+            SaveFileDialog fd = new SaveFileDialog();
+            fd.FileName = TempReportFileName;
+            fd.DefaultExt = ".html";
+            fd.Filter = "HTML Reports|*.html";
+            if (fd.ShowDialog() == DialogResult.OK)
+            {
+                string ReportFileName = fd.FileName;
+                StringBuilder b = new StringBuilder();
+                b.AppendLine("<html>");
+                b.AppendLine("<head>");
+                b.AppendLine("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>");
+                b.AppendLine("<title>" + "Report: " + ReportFileName + "</title>");
+                b.AppendLine("</head>");
+                b.AppendLine("<body>");
+                b.AppendLine("<h1>" + "Report: " + ReportFileName + "</h1>");
+                b.AppendLine("<table border='1'>");
+                b.AppendLine("<tr>");
+                b.AppendLine("<td>Read time</td>");
+                b.AppendLine("<td>" + this.label_time.Text + "</td>");
+                b.AppendLine("</tr>");
+                b.AppendLine("<tr>");
+                b.AppendLine("</tr>");
+                b.AppendLine("<tr>");
+                b.AppendLine("<td>Key word</td>");
+                b.AppendLine("<td>" + this.textBox_wordToFind.Text + "</td>");
+                b.AppendLine("</tr>");
+                b.AppendLine("<tr>");
+                b.AppendLine("<td>Maximum distance</td>");
+                b.AppendLine("<td>" + this.textBox_maxDistance.Text + "</td>");
+                b.AppendLine("</tr>");
+                b.AppendLine("<tr>");
+                b.AppendLine("<td>Search time</td>");
+                b.AppendLine("<td>" + this.labelTimeFind.Text + "</td>");
+                b.AppendLine("</tr>"); b.AppendLine("<tr valign='top'>");
+                b.AppendLine("<td>Search result</td>");
+                b.AppendLine("<td>"); b.AppendLine("<ul>");
+                foreach (var x in this.listBox.Items)
+                {
+                    b.AppendLine("<li>" + x.ToString() + "</li>");
+                }
+                b.AppendLine("</ul>");
+                b.AppendLine("</td>");
+                b.AppendLine("</tr>");
+                b.AppendLine("</table>");
+                b.AppendLine("</body>");
+                b.AppendLine("</html>");
+                File.AppendAllText(ReportFileName, b.ToString());
+                MessageBox.Show("Report created. File: " + ReportFileName);
+            }
+        }
+
         private void DZ_Load(object sender, EventArgs e)
         {
 
