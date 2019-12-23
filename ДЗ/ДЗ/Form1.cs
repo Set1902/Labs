@@ -200,30 +200,30 @@ namespace DZ
                 b.AppendLine("<html>");
                 b.AppendLine("<head>");
                 b.AppendLine("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>");
-                b.AppendLine("<title>" + "Report: " + ReportFileName + "</title>");
+                b.AppendLine("<title>" + "Отчет: " + ReportFileName + "</title>");
                 b.AppendLine("</head>");
                 b.AppendLine("<body>");
-                b.AppendLine("<h1>" + "Report: " + ReportFileName + "</h1>");
+                b.AppendLine("<h1>" + "Отчет: " + ReportFileName + "</h1>");
                 b.AppendLine("<table border='1'>");
                 b.AppendLine("<tr>");
-                b.AppendLine("<td>Read time</td>");
+                b.AppendLine("<td>Время поиска</td>");
                 b.AppendLine("<td>" + this.label_time.Text + "</td>");
                 b.AppendLine("</tr>");
                 b.AppendLine("<tr>");
                 b.AppendLine("</tr>");
                 b.AppendLine("<tr>");
-                b.AppendLine("<td>Key word</td>");
+                b.AppendLine("<td>Слово</td>");
                 b.AppendLine("<td>" + this.textBox_wordToFind.Text + "</td>");
                 b.AppendLine("</tr>");
                 b.AppendLine("<tr>");
-                b.AppendLine("<td>Maximum distance</td>");
+                b.AppendLine("<td>Дистанция</td>");
                 b.AppendLine("<td>" + this.textBox_maxDistance.Text + "</td>");
                 b.AppendLine("</tr>");
                 b.AppendLine("<tr>");
-                b.AppendLine("<td>Search time</td>");
+                b.AppendLine("<td>Время поиска</td>");
                 b.AppendLine("<td>" + this.labelTimeFind.Text + "</td>");
                 b.AppendLine("</tr>"); b.AppendLine("<tr valign='top'>");
-                b.AppendLine("<td>Search result</td>");
+                b.AppendLine("<td>Результат поиска</td>");
                 b.AppendLine("<td>"); b.AppendLine("<ul>");
                 foreach (var x in this.listBox.Items)
                 {
@@ -236,7 +236,7 @@ namespace DZ
                 b.AppendLine("</body>");
                 b.AppendLine("</html>");
                 File.AppendAllText(ReportFileName, b.ToString());
-                MessageBox.Show("Report created. File: " + ReportFileName);
+                MessageBox.Show("Отчет сделан. File: " + ReportFileName);
             }
         }
 
