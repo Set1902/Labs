@@ -244,5 +244,10 @@ namespace DZ
         {
 
         }
+
+        private void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
