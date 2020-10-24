@@ -84,7 +84,7 @@ def main():
     
     print('\nЗадание А2')
     res_12_unsorted = []
-    # Перебираем все отделы
+
     for d in deps:
         d_emps = list(filter(lambda x: x[2] == d.name, one_to_many)) 
         if len(d_emps) > 0:
@@ -95,12 +95,12 @@ def main():
 
     print('\nЗадание А3')
     res_13 = {}
-    # Перебираем все отделы
+
     for e in emps:
         if 'ов' == e.fio[-2:]:
-            # Список сотрудников отдела
+
             d_emps = list(filter(lambda i: i[0]==e.fio, many_to_many))
-            # Только ФИО сотрудников
+
             d_emps_names = [x[2] for x in d_emps]
             res_13[e.fio] = d_emps_names
 
