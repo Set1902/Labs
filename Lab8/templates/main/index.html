@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+
+</script>
+
+
+    <title>Самолеты</title>
+</head>
+<style>
+    body{
+        background-color: aqua ;
+    }
+    button {
+    border: 0;
+    padding: 0;
+    display: inline;
+    background: none;
+    text-decoration: underline;
+    color: blue;
+}
+button:hover {
+    cursor: pointer;
+}
+    table.table {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 100px;
+        background-color: white;
+}
+    .caption {
+  left: 0;
+  margin-top: 150px;
+  width: 100%;
+
+}
+    .caption span.border {
+  background-color: #343a3f;
+  color: #fff;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+}
+</style>
+<body>
+<div class="caption d-flex justify-content-center">
+                <span class="border">Самолеты</span>
+            </div>
+    <form action="sort" method="get">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Тип самолета</th>
+
+
+                </tr>
+            </thead>
+    <tbody>
+      <tr>
+          <td><button name="tsort" value="737">Boeing 737</button></td>
+      </tr>
+
+      <tr>
+          <td><button name="tsort" value="757">Ищуштп 757</button></td>
+      </tr>
+    </tbody>
+  </table>
+    </form>
+
+</body>
+</html>
